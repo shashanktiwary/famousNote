@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { CharacterService } from '../shared/character.service';
+import { ChallengesService } from '../shared/challenges.service'
 
 @Component({
     moduleId: module.id,
@@ -8,11 +7,18 @@ import { CharacterService } from '../shared/character.service';
 })
 export class HomeComponent implements OnInit {
     characters: string[];
+    openedChallenges: any;
+    closedChallenges : any;
+    currentChallenges: any;
+    tabChanged (event):any {
+        console.log('clicked');
+    }
 
-    constructor(private characterService: CharacterService) { }
+    constructor(private challengesService: ChallengesService) { }
 
     ngOnInit() {
-        this.characterService.getCharacters()
-            .subscribe(characters => this.characters = characters);
+        
+        this.challengesService.getCurrentChallanges()
+            .subscribe(challenges => this.currentChallenges = challenges);
     }
 }

@@ -7,18 +7,20 @@ import { AppComponent }  from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { routing, appRoutingProviders } from './app.routing';
-import { CharacterService } from './shared/character.service';
+import { ChallengesService } from './shared/challenges.service';
+import { MdlModule } from 'angular2-mdl';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
+        MdlModule
     ],
     providers: [
         appRoutingProviders,
-        CharacterService
+        ChallengesService
     ],
     declarations: [
         AppComponent,

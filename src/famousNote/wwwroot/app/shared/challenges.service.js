@@ -10,19 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var CharacterService = (function () {
-    function CharacterService(http) {
+var ChallengesService = (function () {
+    function ChallengesService(http) {
         this.http = http;
     }
-    CharacterService.prototype.getCharacters = function () {
-        return this.http.get('api/characters')
+    ChallengesService.prototype.getCurrentChallanges = function () {
+        return this.http.get('api/challenges/current')
             .map(function (response) { return response.json(); });
     };
-    return CharacterService;
+    ChallengesService.prototype.getOpenChallanges = function () {
+        return this.http.get('api/challenges/opened')
+            .map(function (response) { return response.json(); });
+    };
+    ChallengesService.prototype.getClosedChallanges = function () {
+        return this.http.get('api/challenges/closed')
+            .map(function (response) { return response.json(); });
+    };
+    return ChallengesService;
 }());
-CharacterService = __decorate([
+ChallengesService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], CharacterService);
-exports.CharacterService = CharacterService;
-//# sourceMappingURL=character.service.js.map
+], ChallengesService);
+exports.ChallengesService = ChallengesService;
+//# sourceMappingURL=challenges.service.js.map

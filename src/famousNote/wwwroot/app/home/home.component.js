@@ -9,15 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var character_service_1 = require("../shared/character.service");
+var challenges_service_1 = require("../shared/challenges.service");
 var HomeComponent = (function () {
-    function HomeComponent(characterService) {
-        this.characterService = characterService;
+    function HomeComponent(challengesService) {
+        this.challengesService = challengesService;
     }
+    HomeComponent.prototype.tabChanged = function (event) {
+        console.log('clicked');
+    };
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.characterService.getCharacters()
-            .subscribe(function (characters) { return _this.characters = characters; });
+        this.challengesService.getCurrentChallanges()
+            .subscribe(function (challenges) { return _this.currentChallenges = challenges; });
     };
     return HomeComponent;
 }());
@@ -26,7 +29,7 @@ HomeComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'home.component.html'
     }),
-    __metadata("design:paramtypes", [character_service_1.CharacterService])
+    __metadata("design:paramtypes", [challenges_service_1.ChallengesService])
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

@@ -13,7 +13,8 @@ var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var about_component_1 = require("./about/about.component");
 var app_routing_1 = require("./app.routing");
-var character_service_1 = require("./shared/character.service");
+var challenges_service_1 = require("./shared/challenges.service");
+var angular2_mdl_1 = require("angular2-mdl");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,11 +26,12 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            app_routing_1.routing
+            app_routing_1.routing,
+            angular2_mdl_1.MdlModule
         ],
         providers: [
             app_routing_1.appRoutingProviders,
-            character_service_1.CharacterService
+            challenges_service_1.ChallengesService
         ],
         declarations: [
             app_component_1.AppComponent,
