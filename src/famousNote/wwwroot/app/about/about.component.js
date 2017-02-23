@@ -14,7 +14,7 @@ var AboutComponent = (function () {
 AboutComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        template: "\n        <div class=\"card-wide mdl-card mdl-shadow--2dp\">\n            <div class=\"mdl-card__title\">\n                <h2 class=\"mdl-card__title-text\">About</h2>\n            </div>\n            <div class=\"mdl-card__supporting-text\">\n                You're ready to start working on famousNote <3\n            </div>\n        </div>\n    "
+        templateUrl: "about.component.html"
     })
 ], AboutComponent);
 exports.AboutComponent = AboutComponent;
