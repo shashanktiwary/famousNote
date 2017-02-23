@@ -7,9 +7,9 @@ import { ChallengesService } from '../shared/challenges.service'
 })
 export class HomeComponent implements OnInit {
     characters: string[];
-    openedChallenges: any;
-    closedChallenges : any;
-    currentChallenges: any;
+    openedChallanges: any;
+    closedChallanges : any;
+    currentChallanges: any;
     tabChanged (event):any {
         console.log('clicked');
     }
@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         
         this.challengesService.getCurrentChallanges()
-            .subscribe(challenges => this.currentChallenges = challenges);
+            .subscribe(challanges => {
+                this.currentChallanges = challanges;
+                console.log(challanges);
+            });
     }
 }

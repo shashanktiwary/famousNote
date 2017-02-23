@@ -13,9 +13,10 @@ var http_1 = require("@angular/http");
 var ChallengesService = (function () {
     function ChallengesService(http) {
         this.http = http;
+        this.root = 'http://localhost:9001/';
     }
     ChallengesService.prototype.getCurrentChallanges = function () {
-        return this.http.get('api/challenges/current')
+        return this.http.get(this.root + 'api/challanges')
             .map(function (response) { return response.json(); });
     };
     ChallengesService.prototype.getOpenChallanges = function () {

@@ -20,7 +20,10 @@ var HomeComponent = (function () {
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.challengesService.getCurrentChallanges()
-            .subscribe(function (challenges) { return _this.currentChallenges = challenges; });
+            .subscribe(function (challanges) {
+            _this.currentChallanges = challanges;
+            console.log(challanges);
+        });
     };
     return HomeComponent;
 }());
