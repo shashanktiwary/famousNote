@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NoteService } from '../shared/notes.service';
 import { Note } from '../models/note';
+import { MdlSnackbarService } from 'angular2-mdl';
 
 @Component({
     moduleId: module.id,
@@ -10,7 +11,7 @@ import { Note } from '../models/note';
 export class SaveNote {
     public noteModel = new Note("", "", "", false, false, null, null, null, null);
 
-    constructor(private noteService: NoteService) { }
+    constructor(private noteService: NoteService, private mdlSnackbarService: MdlSnackbarService) { }
 
     onSubmit() {
         (<any>this.noteModel)["time"] = "say";
@@ -18,8 +19,13 @@ export class SaveNote {
         console.log(this.noteModel);
         this.noteService.post(this.noteModel)
             .subscribe(
-            response => console.log(response),
+            response => {
+                this.mdlSnackbarService.showToast("Note saved.");
+                this.noteModel = new Note("", "", "", false, false, null, null, null, null);
+            },
             error => console.error(error)
             );
     }
+
+
 }

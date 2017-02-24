@@ -11,16 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var notes_service_1 = require("../shared/notes.service");
 var note_1 = require("../models/note");
+var angular2_mdl_1 = require("angular2-mdl");
 var SaveNote = (function () {
-    function SaveNote(noteService) {
+    function SaveNote(noteService, mdlSnackbarService) {
         this.noteService = noteService;
+        this.mdlSnackbarService = mdlSnackbarService;
         this.noteModel = new note_1.Note("", "", "", false, false, null, null, null, null);
     }
     SaveNote.prototype.onSubmit = function () {
+        var _this = this;
         this.noteModel["time"] = "say";
         console.log(this.noteModel);
         this.noteService.post(this.noteModel)
-            .subscribe(function (response) { return console.log(response); }, function (error) { return console.error(error); });
+            .subscribe(function (response) {
+            _this.mdlSnackbarService.showToast("Note saved.");
+            _this.noteModel = new note_1.Note("", "", "", false, false, null, null, null, null);
+        }, function (error) { return console.error(error); });
     };
     return SaveNote;
 }());
@@ -29,7 +35,7 @@ SaveNote = __decorate([
         moduleId: module.id,
         templateUrl: 'save-note.component.html'
     }),
-    __metadata("design:paramtypes", [notes_service_1.NoteService])
+    __metadata("design:paramtypes", [notes_service_1.NoteService, angular2_mdl_1.MdlSnackbarService])
 ], SaveNote);
 exports.SaveNote = SaveNote;
 //# sourceMappingURL=save-note.component.js.map
