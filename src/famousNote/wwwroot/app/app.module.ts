@@ -9,6 +9,9 @@ import { AboutComponent } from './about/about.component';
 import { routing, appRoutingProviders } from './app.routing';
 import { ChallengesService } from './shared/challenges.service';
 import { MdlModule } from 'angular2-mdl';
+import { Notes } from './note/notes.component';
+import { SaveNote } from './note/save-note.component';
+import { NoteService } from './shared/notes.service';
 
 @NgModule({
     imports: [
@@ -20,12 +23,15 @@ import { MdlModule } from 'angular2-mdl';
     ],
     providers: [
         appRoutingProviders,
-        ChallengesService
+        ChallengesService,
+        NoteService
     ],
     declarations: [
         AppComponent,
         HomeComponent,
-        AboutComponent
+        AboutComponent,
+        Notes,
+        SaveNote
     ],
     bootstrap: [AppComponent]
 })

@@ -1,0 +1,15 @@
+<div class="mdl-layout__tab-panel is-active" id="overview">
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <form>
+            <p>
+                <mdl-textfield label="Title" type="text" name="Title" floating-label [(ngModel)]="noteModel.title"></mdl-textfield>
+            </p>
+            <p>
+                <mdl-textfield label="Note" type="text" name="Note" floating-label [(ngModel)]="noteModel.note"></mdl-textfield>
+            </p>
+            <p>
+                <button mdl-button (click)="onSubmit()" mdl-button-type="raised" mdl-ripple mdl-colored="primary">Submit</button>
+            </p>
+        </form>
+    </section>
+</div>

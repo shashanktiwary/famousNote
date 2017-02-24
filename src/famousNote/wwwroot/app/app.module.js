@@ -15,6 +15,9 @@ var about_component_1 = require("./about/about.component");
 var app_routing_1 = require("./app.routing");
 var challenges_service_1 = require("./shared/challenges.service");
 var angular2_mdl_1 = require("angular2-mdl");
+var notes_component_1 = require("./note/notes.component");
+var save_note_component_1 = require("./note/save-note.component");
+var notes_service_1 = require("./shared/notes.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,12 +34,15 @@ AppModule = __decorate([
         ],
         providers: [
             app_routing_1.appRoutingProviders,
-            challenges_service_1.ChallengesService
+            challenges_service_1.ChallengesService,
+            notes_service_1.NoteService
         ],
         declarations: [
             app_component_1.AppComponent,
             home_component_1.HomeComponent,
-            about_component_1.AboutComponent
+            about_component_1.AboutComponent,
+            notes_component_1.Notes,
+            save_note_component_1.SaveNote
         ],
         bootstrap: [app_component_1.AppComponent]
     })
