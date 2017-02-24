@@ -10,12 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var notes_service_1 = require("../shared/notes.service");
+var angular2_mdl_1 = require("angular2-mdl");
 var Notes = (function () {
-    function Notes(noteService) {
+    function Notes(noteService, mdlSnackbarService) {
         this.noteService = noteService;
+        this.mdlSnackbarService = mdlSnackbarService;
     }
     Notes.prototype.ngOnInit = function () {
         this.notes = this.noteService.query();
+    };
+    Notes.prototype.publishNote = function (note) {
+        var _this = this;
+        note.published = true;
+        this.noteService.update(note)
+            .subscribe(function (response) {
+            _this.mdlSnackbarService.showToast("Note published.");
+            _this.ngOnInit();
+        }, function (error) { return console.error(error); });
     };
     return Notes;
 }());
@@ -24,7 +35,7 @@ Notes = __decorate([
         moduleId: module.id,
         templateUrl: 'notes.component.html'
     }),
-    __metadata("design:paramtypes", [notes_service_1.NoteService])
+    __metadata("design:paramtypes", [notes_service_1.NoteService, angular2_mdl_1.MdlSnackbarService])
 ], Notes);
 exports.Notes = Notes;
 //# sourceMappingURL=notes.component.js.map

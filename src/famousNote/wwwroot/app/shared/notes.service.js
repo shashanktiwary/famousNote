@@ -23,6 +23,11 @@ var NoteService = (function () {
         return this.http.post(this.root + 'notes', note)
             .map(function (response) { return response.json(); });
     };
+    NoteService.prototype.update = function (note) {
+        console.log(note);
+        return this.http.put(this.root + ("notes/" + note._id), note)
+            .map(function (response) { return response.json(); });
+    };
     return NoteService;
 }());
 NoteService = __decorate([
