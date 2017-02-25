@@ -26,6 +26,9 @@ export class Notes implements OnInit {
                 this.mdlSnackbarService.showToast("Note published.");
                 this.ngOnInit();
             },
-            error => console.error(error));
+            error =>{
+                note.published = false;
+                console.error(error);
+            });
     }
 }

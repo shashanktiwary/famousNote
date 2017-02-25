@@ -26,7 +26,10 @@ var Notes = (function () {
             .subscribe(function (response) {
             _this.mdlSnackbarService.showToast("Note published.");
             _this.ngOnInit();
-        }, function (error) { return console.error(error); });
+        }, function (error) {
+            note.published = false;
+            console.error(error);
+        });
     };
     return Notes;
 }());
