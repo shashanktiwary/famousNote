@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { routing, appRoutingProviders } from './app.routing';
@@ -12,6 +12,8 @@ import { MdlModule } from 'angular2-mdl';
 import { Notes } from './note/notes.component';
 import { SaveNote } from './note/save-note.component';
 import { NoteService } from './shared/notes.service';
+
+import { AuthService } from './shared/auth.service';
 
 @NgModule({
     imports: [
@@ -24,7 +26,8 @@ import { NoteService } from './shared/notes.service';
     providers: [
         appRoutingProviders,
         ChallengesService,
-        NoteService
+        NoteService,
+        AuthService
     ],
     declarations: [
         AppComponent,

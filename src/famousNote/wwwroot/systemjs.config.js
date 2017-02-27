@@ -23,7 +23,8 @@
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             // other libraries
             'rxjs': 'npm:rxjs',
-            'angular2-mdl': 'npm:angular2-mdl'
+            'angular2-mdl': 'npm:angular2-mdl',
+            'oidc-client': 'npm:oidc-client'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -34,8 +35,12 @@
             rxjs: {
                 defaultExtension: 'js'
             },
-            "angular2-mdl": { 
+            "angular2-mdl": {
                 main: 'bundle/angular2-mdl.js'
+            },
+            'oidc-client': {
+                main: 'lib/oidc-client.js',
+                defaultExtension: 'js'
             }
         }
     });

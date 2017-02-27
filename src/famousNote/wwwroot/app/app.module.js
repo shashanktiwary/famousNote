@@ -18,6 +18,7 @@ var angular2_mdl_1 = require("angular2-mdl");
 var notes_component_1 = require("./note/notes.component");
 var save_note_component_1 = require("./note/save-note.component");
 var notes_service_1 = require("./shared/notes.service");
+var auth_service_1 = require("./shared/auth.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -35,7 +36,8 @@ AppModule = __decorate([
         providers: [
             app_routing_1.appRoutingProviders,
             challenges_service_1.ChallengesService,
-            notes_service_1.NoteService
+            notes_service_1.NoteService,
+            auth_service_1.AuthService
         ],
         declarations: [
             app_component_1.AppComponent,

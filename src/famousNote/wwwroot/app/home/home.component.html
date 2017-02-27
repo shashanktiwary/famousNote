@@ -5,6 +5,7 @@
       <div>
         I am looking for an easy to get a login form centered on the screen using Google's Material Design Lite library.
       </div>
+      {{_user | json}}
     </header>
     <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
       <div class="mdl-card__supporting-text">
@@ -17,6 +18,21 @@
       </div>
     </div>
     <button mdl-button #btn2="mdlButton" (click)="m2.toggle($event, btn2)" mdl-button-type="icon" mdl-ripple><mdl-icon>more_vert</mdl-icon></button>
+
+    <div>
+      <button (click)="clearState()" id='clearState'>clear stale state</button>
+      <button (click)="getUser()" id='getUser'>get user</button>
+      <button (click)="removeUser()" id='removeUser'>remove user</button>
+    </div>
+    <div>
+      <button (click)="startSigninMainWindow()" id='startSigninMainWindow'>start signin main window</button>
+      <button (click)="endSigninMainWindow()" id='endSigninMainWindow'>end signin main window</button>
+    </div>
+    <div>
+      <button (click)="startSignoutMainWindow()" id='startSignoutMainWindow'>start signout main window</button>
+      <button (click)="endSignoutMainWindow()" id='endSignoutMainWindow'>end signout main window</button>
+    </div>
+
     <mdl-menu #m2="mdlMenu" mdl-menu-position="bottom-right">
       <mdl-menu-item mdl-ripple (click)="action()">Some Action</mdl-menu-item>
       <mdl-menu-item mdl-ripple mdl-menu-item-full-bleed-divider>Another Action</mdl-menu-item>

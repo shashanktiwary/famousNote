@@ -10,20 +10,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var challenges_service_1 = require("../shared/challenges.service");
+var auth_service_1 = require("../shared/auth.service");
 var HomeComponent = (function () {
-    function HomeComponent(challengesService) {
+    function HomeComponent(challengesService, authService) {
         this.challengesService = challengesService;
+        this.authService = authService;
     }
     HomeComponent.prototype.tabChanged = function (event) {
         console.log('clicked');
     };
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.loadedUserSub = this.authService.userLoadededEvent
+            .subscribe(function (user) {
+            _this._user = user;
+        });
         this.challengesService.getCurrentChallanges()
             .subscribe(function (challanges) {
             _this.currentChallanges = challanges;
             console.log(challanges);
         });
+    };
+    HomeComponent.prototype.clearState = function () {
+        this.authService.clearState();
+    };
+    HomeComponent.prototype.getUser = function () {
+        this.authService.getUser();
+    };
+    HomeComponent.prototype.removeUser = function () {
+        this.authService.removeUser();
+    };
+    HomeComponent.prototype.startSigninMainWindow = function () {
+        this.authService.startSigninMainWindow();
+    };
+    HomeComponent.prototype.endSigninMainWindow = function () {
+        this.authService.endSigninMainWindow();
+    };
+    HomeComponent.prototype.startSignoutMainWindow = function () {
+        this.authService.startSignoutMainWindow();
+    };
+    HomeComponent.prototype.endSignoutMainWindow = function () {
+        this.authService.endSigninMainWindow();
+    };
+    HomeComponent.prototype.ngOnDestroy = function () {
+        if (this.loadedUserSub.unsubscribe()) {
+            this.loadedUserSub.unsubscribe();
+        }
     };
     return HomeComponent;
 }());
@@ -32,7 +64,7 @@ HomeComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'home.component.html'
     }),
-    __metadata("design:paramtypes", [challenges_service_1.ChallengesService])
+    __metadata("design:paramtypes", [challenges_service_1.ChallengesService, auth_service_1.AuthService])
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map
