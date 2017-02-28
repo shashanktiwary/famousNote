@@ -10,6 +10,8 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
+var login_component_1 = require("./login/login.component");
+var logout_component_1 = require("./logout/logout.component");
 var home_component_1 = require("./home/home.component");
 var about_component_1 = require("./about/about.component");
 var app_routing_1 = require("./app.routing");
@@ -18,7 +20,10 @@ var angular2_mdl_1 = require("angular2-mdl");
 var notes_component_1 = require("./note/notes.component");
 var save_note_component_1 = require("./note/save-note.component");
 var notes_service_1 = require("./shared/notes.service");
+var unauthorized_component_1 = require("./unauthorized/unauthorized.component");
+var callback_component_1 = require("./login/callback.component");
 var auth_service_1 = require("./shared/auth.service");
+var auth_gaurd_service_1 = require("./shared/auth.gaurd.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,14 +42,19 @@ AppModule = __decorate([
             app_routing_1.appRoutingProviders,
             challenges_service_1.ChallengesService,
             notes_service_1.NoteService,
-            auth_service_1.AuthService
+            auth_service_1.AuthService,
+            auth_gaurd_service_1.AuthGuardService
         ],
         declarations: [
             app_component_1.AppComponent,
             home_component_1.HomeComponent,
             about_component_1.AboutComponent,
             notes_component_1.Notes,
-            save_note_component_1.SaveNote
+            save_note_component_1.SaveNote,
+            login_component_1.LoginComponent,
+            logout_component_1.LogoutComponent,
+            unauthorized_component_1.UnauthorizedComponent,
+            callback_component_1.CallbackComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

@@ -15,6 +15,7 @@ export class AuthService {
 
 
     constructor(private http: Http) {
+        console.log('auth service constructor called.');
         this.mgr.getUser()
             .then((user) => {
                 if (user) {
@@ -70,15 +71,11 @@ export class AuthService {
         });
     }
     endSigninMainWindow() {
-        this.mgr.signinRedirectCallback().then(function (user) {
-            console.log("signed in", user);
-        }).catch(function (err) {
-            console.log(err);
-        });
+        return this.mgr.signinRedirectCallback();
     }
 
     startSignoutMainWindow() {
-        this.mgr.signoutRedirect().then(function (resp) {
+        return this.mgr.signoutRedirect().then(function (resp) {
             console.log("signed out", resp);
             setTimeout(5000, () => {
                 console.log("testing to see if fired...");
@@ -90,7 +87,7 @@ export class AuthService {
     };
 
     endSignoutMainWindow() {
-        this.mgr.signoutRedirectCallback().then(function (resp) {
+        return this.mgr.signoutRedirectCallback().then(function (resp) {
             console.log("signed out", resp);
         }).catch(function (err) {
             console.log(err);
@@ -175,17 +172,15 @@ export class AuthService {
 }
 
 const settings: any = {
-    authority: 'https://github.com/login/oauth/authorize',
-    client_id: 'js.tokenmanager',
-    redirect_uri: 'http://localhost:5000',
-    post_logout_redirect_uri: 'http://localhost:5000/',
+    authority: 'https://accounts.google.com/.well-known/openid-configuration',
+    client_id: '587152662839-vr7o37jcpn6ora2llurkdo07u75ne5vl.apps.googleusercontent.com',
+    redirect_uri: 'http://localhost:5000/callback',
+    post_logout_redirect_uri: 'http://localhost:5000/callback',
     response_type: 'id_token token',
-    scope: 'openid email roles',
-
-    silent_redirect_uri: 'http://localhost:5000',
+    scope: 'openid email profile',
+    silent_redirect_uri: 'http://localhost:5000/callback',
     automaticSilentRenew: true,
     //silentRequestTimeout:10000,
-
     filterProtocolClaims: true,
-    loadUserInfo: true
+    loadUserInfo: true,
 };

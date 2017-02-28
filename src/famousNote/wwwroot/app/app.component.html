@@ -5,13 +5,17 @@
     <div class="mdl-layout--large-screen-only mdl-layout__header-row">
       <h3>Famous Note "Let's change your world thru words" </h3>
     </div>
-    <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-    </div>
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-      <a [routerLink]="['/']" class="mdl-layout__tab" routerLinkActive="is-active">Challenges<span class="mdl-ripple"></span></a>
-      <a [routerLink]="['/notes']" class="mdl-layout__tab">My Notes<span class="mdl-ripple"></span></a>
-      <a class="mdl-layout__tab">Profile</a>
-      <a [routerLink]="['/about']" class="mdl-layout__tab" routerLinkActive="is-active" class="mdl-layout__tab">About</a>
+    <div class="mdl-layout__tab-bar mdl-grid mdl-grid--no-spacing mdl-js-ripple-effect mdl-color--primary-dark">
+      <div class="mdl-cell--8-col-desktop mdl-cell--7-col-tablet mdl-cell--6-col-phone">
+        <a [routerLink]="['/']" class="mdl-layout__tab" routerLinkActive="is-active">Challenges<span class="mdl-ripple"></span></a>
+        <a [routerLink]="['/notes']" class="mdl-layout__tab">My Notes<span class="mdl-ripple"></span></a>
+        <a class="mdl-layout__tab">Profile</a>
+        <a [routerLink]="['/about']" class="mdl-layout__tab" routerLinkActive="is-active" class="mdl-layout__tab">About</a>
+      </div>
+      <div *ngIf="_user">
+        <img [src]="_user.profile.picture[0]" class="demo-avatar">
+        <a [routerLink]="['/logout']" class="mdl-layout__tab" routerLinkActive="is-active" class="mdl-layout__tab">{{_user.profile.name}}</a>
+      </div>
       <button [routerLink]="'/notes/save'" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent"
         id="add">
         <i class="material-icons" role="presentation">add</i>

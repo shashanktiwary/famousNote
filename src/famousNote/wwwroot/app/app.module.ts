@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { routing, appRoutingProviders } from './app.routing';
@@ -12,8 +14,11 @@ import { MdlModule } from 'angular2-mdl';
 import { Notes } from './note/notes.component';
 import { SaveNote } from './note/save-note.component';
 import { NoteService } from './shared/notes.service';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { CallbackComponent } from './login/callback.component';
 
 import { AuthService } from './shared/auth.service';
+import { AuthGuardService } from './shared/auth.gaurd.service';
 
 @NgModule({
     imports: [
@@ -27,14 +32,19 @@ import { AuthService } from './shared/auth.service';
         appRoutingProviders,
         ChallengesService,
         NoteService,
-        AuthService
+        AuthService,
+        AuthGuardService
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         AboutComponent,
         Notes,
-        SaveNote
+        SaveNote,
+        LoginComponent,
+        LogoutComponent,
+        UnauthorizedComponent,
+        CallbackComponent
     ],
     bootstrap: [AppComponent]
 })

@@ -18,6 +18,7 @@ var AuthService = (function () {
         this.mgr = new oidc_client_1.UserManager(settings);
         this.userLoadededEvent = new core_1.EventEmitter();
         this.loggedIn = false;
+        console.log('auth service constructor called.');
         this.mgr.getUser()
             .then(function (user) {
             if (user) {
@@ -72,14 +73,10 @@ var AuthService = (function () {
         });
     };
     AuthService.prototype.endSigninMainWindow = function () {
-        this.mgr.signinRedirectCallback().then(function (user) {
-            console.log("signed in", user);
-        }).catch(function (err) {
-            console.log(err);
-        });
+        return this.mgr.signinRedirectCallback();
     };
     AuthService.prototype.startSignoutMainWindow = function () {
-        this.mgr.signoutRedirect().then(function (resp) {
+        return this.mgr.signoutRedirect().then(function (resp) {
             console.log("signed out", resp);
             setTimeout(5000, function () {
                 console.log("testing to see if fired...");
@@ -90,7 +87,7 @@ var AuthService = (function () {
     };
     ;
     AuthService.prototype.endSignoutMainWindow = function () {
-        this.mgr.signoutRedirectCallback().then(function (resp) {
+        return this.mgr.signoutRedirectCallback().then(function (resp) {
             console.log("signed out", resp);
         }).catch(function (err) {
             console.log(err);
@@ -170,16 +167,16 @@ AuthService = __decorate([
 ], AuthService);
 exports.AuthService = AuthService;
 var settings = {
-    authority: 'https://github.com/login/oauth/authorize',
-    client_id: 'js.tokenmanager',
-    redirect_uri: 'http://localhost:5000',
-    post_logout_redirect_uri: 'http://localhost:5000/',
+    authority: 'https://accounts.google.com/.well-known/openid-configuration',
+    client_id: '587152662839-vr7o37jcpn6ora2llurkdo07u75ne5vl.apps.googleusercontent.com',
+    redirect_uri: 'http://localhost:5000/callback',
+    post_logout_redirect_uri: 'http://localhost:5000/callback',
     response_type: 'id_token token',
-    scope: 'openid email roles',
-    silent_redirect_uri: 'http://localhost:5000',
+    scope: 'openid email profile',
+    silent_redirect_uri: 'http://localhost:5000/callback',
     automaticSilentRenew: true,
     //silentRequestTimeout:10000,
     filterProtocolClaims: true,
-    loadUserInfo: true
+    loadUserInfo: true,
 };
 //# sourceMappingURL=auth.service.js.map

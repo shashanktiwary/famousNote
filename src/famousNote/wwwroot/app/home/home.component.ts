@@ -26,39 +26,13 @@ export class HomeComponent implements OnInit {
         this.loadedUserSub = this.authService.userLoadededEvent
             .subscribe(user => {
                 this._user = user;
-            });
+            },
+            error => console.log(error));
+         
         this.challengesService.getCurrentChallanges()
             .subscribe(challanges => {
                 this.currentChallanges = challanges;
                 console.log(challanges);
             });
-    }
-
-    clearState() {
-        this.authService.clearState();
-    }
-    getUser() {
-        this.authService.getUser();
-    }
-    removeUser() {
-        this.authService.removeUser();
-    }
-    startSigninMainWindow() {
-        this.authService.startSigninMainWindow();
-    }
-    endSigninMainWindow() {
-        this.authService.endSigninMainWindow();
-    }
-    startSignoutMainWindow() {
-        this.authService.startSignoutMainWindow();
-    }
-    endSignoutMainWindow() {
-        this.authService.endSigninMainWindow();
-    }
-
-    ngOnDestroy() {
-        if (this.loadedUserSub.unsubscribe()) {
-            this.loadedUserSub.unsubscribe();
-        }
     }
 }

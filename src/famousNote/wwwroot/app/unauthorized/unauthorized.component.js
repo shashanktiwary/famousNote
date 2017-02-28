@@ -9,28 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var auth_service_1 = require("./shared/auth.service");
-var AppComponent = (function () {
-    function AppComponent(authService) {
-        this.authService = authService;
+var router_1 = require("@angular/router");
+var UnauthorizedComponent = (function () {
+    function UnauthorizedComponent(router) {
+        this.router = router;
     }
-    AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.loadedUserSub = this.authService.userLoadededEvent
-            .subscribe(function (user) {
-            console.log('called app user callback');
-            _this._user = user;
-        }, function (error) { return console.log(error); });
+    UnauthorizedComponent.prototype.redirectToLogin = function () {
+        this.router.navigate(['login']);
     };
-    return AppComponent;
+    return UnauthorizedComponent;
 }());
-AppComponent = __decorate([
+UnauthorizedComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'app-root',
-        templateUrl: 'app.component.html'
+        templateUrl: 'unauthorized.component.html'
     }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+    __metadata("design:paramtypes", [router_1.Router])
+], UnauthorizedComponent);
+exports.UnauthorizedComponent = UnauthorizedComponent;
+//# sourceMappingURL=unauthorized.component.js.map

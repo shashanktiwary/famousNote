@@ -10,29 +10,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var auth_service_1 = require("./auth.service");
 var NoteService = (function () {
-    function NoteService(http) {
+    function NoteService(http, authService) {
         this.http = http;
+        this.authService = authService;
         this.root = 'http://localhost:9002/api/';
     }
     NoteService.prototype.query = function () {
-        return this.http.get(this.root + 'notes')
+        return this.authService.AuthGet(this.root + 'notes')
             .map(function (response) { return response.json(); });
     };
     NoteService.prototype.post = function (note) {
-        return this.http.post(this.root + 'notes', note)
+        return this.authService.AuthPost(this.root + 'notes', note)
             .map(function (response) { return response.json(); });
     };
     NoteService.prototype.update = function (note) {
-        console.log(note);
-        return this.http.put(this.root + ("notes/" + note._id), note)
+        return this.authService.AuthPut(this.root + ("notes/" + note._id), note)
             .map(function (response) { return response.json(); });
     };
     return NoteService;
 }());
 NoteService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, auth_service_1.AuthService])
 ], NoteService);
 exports.NoteService = NoteService;
 //# sourceMappingURL=notes.service.js.map

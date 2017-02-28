@@ -24,38 +24,12 @@ var HomeComponent = (function () {
         this.loadedUserSub = this.authService.userLoadededEvent
             .subscribe(function (user) {
             _this._user = user;
-        });
+        }, function (error) { return console.log(error); });
         this.challengesService.getCurrentChallanges()
             .subscribe(function (challanges) {
             _this.currentChallanges = challanges;
             console.log(challanges);
         });
-    };
-    HomeComponent.prototype.clearState = function () {
-        this.authService.clearState();
-    };
-    HomeComponent.prototype.getUser = function () {
-        this.authService.getUser();
-    };
-    HomeComponent.prototype.removeUser = function () {
-        this.authService.removeUser();
-    };
-    HomeComponent.prototype.startSigninMainWindow = function () {
-        this.authService.startSigninMainWindow();
-    };
-    HomeComponent.prototype.endSigninMainWindow = function () {
-        this.authService.endSigninMainWindow();
-    };
-    HomeComponent.prototype.startSignoutMainWindow = function () {
-        this.authService.startSignoutMainWindow();
-    };
-    HomeComponent.prototype.endSignoutMainWindow = function () {
-        this.authService.endSigninMainWindow();
-    };
-    HomeComponent.prototype.ngOnDestroy = function () {
-        if (this.loadedUserSub.unsubscribe()) {
-            this.loadedUserSub.unsubscribe();
-        }
     };
     return HomeComponent;
 }());
