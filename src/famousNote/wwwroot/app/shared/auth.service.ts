@@ -99,6 +99,8 @@ export class AuthService {
      */
     AuthGet(url: string, options?: RequestOptions): Observable<Response> {
 
+        this._setAuthHeaders(this.currentUser);
+        
         if (options) {
             options = this._setRequestOptions(options);
         }
