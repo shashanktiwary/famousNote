@@ -18,7 +18,7 @@ var appRoutes = [
     { path: 'home', component: home_component_1.HomeComponent, canActivate: [auth_gaurd_service_1.AuthGuardService] },
     { path: 'about', component: about_component_1.AboutComponent, canActivate: [auth_gaurd_service_1.AuthGuardService] },
     { path: 'notes', component: notes_component_1.Notes, canActivate: [auth_gaurd_service_1.AuthGuardService] },
-    { path: 'notes/save', component: save_note_component_1.SaveNote, canActivate: [auth_gaurd_service_1.AuthGuardService] }
+    { path: 'notes/save', component: save_note_component_1.SaveNote, canActivate: [auth_gaurd_service_1.AuthGuardService] },
 ];
 exports.appRoutingProviders = [
     auth_gaurd_service_1.AuthGuardService,

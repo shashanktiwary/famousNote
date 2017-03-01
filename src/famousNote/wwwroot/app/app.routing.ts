@@ -14,14 +14,14 @@ import { AuthService } from './shared/auth.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
-    { path: 'logout', component: CallbackComponent }
+    { path: 'logout', component: CallbackComponent },
     { path: 'callback', component: CallbackComponent },
     { path: 'login', component: LoginComponent },
     { path: 'unauthorized', component: UnauthorizedComponent },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
     { path: 'about', component: AboutComponent, canActivate: [AuthGuardService] },
     { path: 'notes', component: Notes, canActivate: [AuthGuardService] },
-    { path: 'notes/save', component: SaveNote, canActivate: [AuthGuardService] }
+    { path: 'notes/save', component: SaveNote, canActivate: [AuthGuardService] },
 ];
 
 export const appRoutingProviders: any[] = [

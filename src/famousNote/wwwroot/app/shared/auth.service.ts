@@ -100,7 +100,7 @@ export class AuthService {
     AuthGet(url: string, options?: RequestOptions): Observable<Response> {
 
         this._setAuthHeaders(this.currentUser);
-        
+
         if (options) {
             options = this._setRequestOptions(options);
         }
@@ -156,10 +156,13 @@ export class AuthService {
 
     private _setAuthHeaders(user: any) {
         this.authHeaders = new Headers();
-        this.authHeaders.append('Authorization', user.token_type + " " + user.access_token);
+        this.authHeaders.append('Authorization', user.token_type + " " + user.id_token);
         this.authHeaders.append('Content-Type', 'application/json');
     }
+
     private _setRequestOptions(options?: RequestOptions) {
+
+        this._setAuthHeaders(this.currentUser);
 
         if (options) {
             options.headers.append(this.authHeaders.keys[0], this.authHeaders.values[0]);

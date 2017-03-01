@@ -148,10 +148,11 @@ var AuthService = (function () {
     };
     AuthService.prototype._setAuthHeaders = function (user) {
         this.authHeaders = new http_1.Headers();
-        this.authHeaders.append('Authorization', user.token_type + " " + user.access_token);
+        this.authHeaders.append('Authorization', user.token_type + " " + user.id_token);
         this.authHeaders.append('Content-Type', 'application/json');
     };
     AuthService.prototype._setRequestOptions = function (options) {
+        this._setAuthHeaders(this.currentUser);
         if (options) {
             options.headers.append(this.authHeaders.keys[0], this.authHeaders.values[0]);
         }
