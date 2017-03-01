@@ -9,8 +9,9 @@
                 {{note.note}}
             </div>
             <div class="mdl-card__menu">
-                <button *ngIf="!note.published" mdl-button #btn2="mdlButton" (click)="publishNote(note)" mdl-button-type="icon" mdl-ripple><mdl-icon>publish</mdl-icon></button>
-                <i *ngIf="note.published" class="material-icons">public</i>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">
+                    <input type="checkbox" class="mdl-checkbox__input" id="list-checkbox-1" #selectedBox [checked]="picked" (change)="noteSelected(note, selectedBox)" />
+                </label>
             </div>
         </div>
     </section>

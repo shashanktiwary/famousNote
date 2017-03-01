@@ -27,6 +27,10 @@ export class ParticipateDialogComponent implements OnInit {
         this.notes = this.noteService.query();
     }
 
+    public noteSelected(note, picked) {
+        console.log(note, picked);
+    }
+
     public login() {
         console.log('login', this.dialog);
         this.dialog.hide();

@@ -26,6 +26,9 @@ var ParticipateDialogComponent = (function () {
     ParticipateDialogComponent.prototype.ngOnInit = function () {
         this.notes = this.noteService.query();
     };
+    ParticipateDialogComponent.prototype.noteSelected = function (note, picked) {
+        console.log(note, picked);
+    };
     ParticipateDialogComponent.prototype.login = function () {
         console.log('login', this.dialog);
         this.dialog.hide();
