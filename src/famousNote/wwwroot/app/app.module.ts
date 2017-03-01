@@ -19,6 +19,7 @@ import { CallbackComponent } from './login/callback.component';
 
 import { AuthService } from './shared/auth.service';
 import { AuthGuardService } from './shared/auth.gaurd.service';
+import { ParticipateDialogComponent } from './home/participate.component';
 
 @NgModule({
     imports: [
@@ -44,8 +45,10 @@ import { AuthGuardService } from './shared/auth.gaurd.service';
         LoginComponent,
         LogoutComponent,
         UnauthorizedComponent,
-        CallbackComponent
+        CallbackComponent,
+        ParticipateDialogComponent
     ],
+    entryComponents: [ParticipateDialogComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,17 @@
+<div class="mdl-layout__tab-panel is-active" id="overview">
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" *ngFor="let note of notes | async">
+        <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+            <i class="material-icons">speaker_notes</i>
+        </header>
+        <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card__supporting-text">
+                <h4>{{note.title}}</h4>
+                {{note.note}}
+            </div>
+            <div class="mdl-card__menu">
+                <button *ngIf="!note.published" mdl-button #btn2="mdlButton" (click)="publishNote(note)" mdl-button-type="icon" mdl-ripple><mdl-icon>publish</mdl-icon></button>
+                <i *ngIf="note.published" class="material-icons">public</i>
+            </div>
+        </div>
+    </section>
+</div>

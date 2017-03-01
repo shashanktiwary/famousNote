@@ -99,8 +99,6 @@ export class AuthService {
      */
     AuthGet(url: string, options?: RequestOptions): Observable<Response> {
 
-        this._setAuthHeaders(this.currentUser);
-
         if (options) {
             options = this._setRequestOptions(options);
         }
@@ -150,6 +148,7 @@ export class AuthService {
         else {
             options = this._setRequestOptions();
         }
+
         return this.http.post(url, body, options);
     }
 
@@ -168,7 +167,7 @@ export class AuthService {
             options.headers.append(this.authHeaders.keys[0], this.authHeaders.values[0]);
         }
         else {
-            options = new RequestOptions({ headers: this.authHeaders, body: "" });
+            options = new RequestOptions({ headers: this.authHeaders });
         }
 
         return options;

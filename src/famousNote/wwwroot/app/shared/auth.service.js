@@ -99,7 +99,6 @@ var AuthService = (function () {
      * @param options if options are not supplied the default content type is application/json
      */
     AuthService.prototype.AuthGet = function (url, options) {
-        this._setAuthHeaders(this.currentUser);
         if (options) {
             options = this._setRequestOptions(options);
         }
@@ -157,7 +156,7 @@ var AuthService = (function () {
             options.headers.append(this.authHeaders.keys[0], this.authHeaders.values[0]);
         }
         else {
-            options = new http_1.RequestOptions({ headers: this.authHeaders, body: "" });
+            options = new http_1.RequestOptions({ headers: this.authHeaders });
         }
         return options;
     };

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengesService } from '../shared/challenges.service'
 import { AuthService } from '../shared/auth.service';
-
+import { MdlDialogService, MdlDialogReference } from 'angular2-mdl';
+import { ParticipateDialogComponent } from './participate.component';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'home.component.html'
+    templateUrl: 'home.component.html',
+    providers: []
 })
 export class HomeComponent implements OnInit {
     characters: string[];
@@ -20,7 +22,7 @@ export class HomeComponent implements OnInit {
         console.log('clicked');
     }
 
-    constructor(private challengesService: ChallengesService, private authService: AuthService) { }
+    constructor(private challengesService: ChallengesService, private authService: AuthService, private dialogService: MdlDialogService) { }
 
     ngOnInit() {
         this.loadedUserSub = this.authService.userLoadededEvent
@@ -28,11 +30,27 @@ export class HomeComponent implements OnInit {
                 this._user = user;
             },
             error => console.log(error));
-         
+
         this.challengesService.getCurrentChallanges()
             .subscribe(challanges => {
                 this.currentChallanges = challanges;
                 console.log(challanges);
             });
+    }
+
+    public showDialog() {
+
+        let pDialog = this.dialogService.showCustomDialog({
+            component: ParticipateDialogComponent,
+            providers: [{ provide: "", useValue: 'Just an example' }],
+            isModal: true,
+            styles: { 'width': '350px' },
+            clickOutsideToClose: true,
+            enterTransitionDuration: 400,
+            leaveTransitionDuration: 400
+        });
+        pDialog.subscribe((dialogReference: MdlDialogReference) => {
+            console.log('dialog visible', dialogReference);
+        });
     }
 }
