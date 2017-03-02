@@ -164,7 +164,12 @@ export class AuthService {
         this._setAuthHeaders(this.currentUser);
 
         if (options) {
-            options.headers.append(this.authHeaders.keys[0], this.authHeaders.values[0]);
+            options.headers = options.headers || new Headers();
+            this.authHeaders.forEach((values, name) => {
+                values.forEach(value => {
+                    options.headers.append(name, value);
+                });
+            });
         }
         else {
             options = new RequestOptions({ headers: this.authHeaders });

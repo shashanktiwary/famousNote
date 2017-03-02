@@ -1,6 +1,5 @@
-
-
 import { Component, HostListener, OnInit } from '@angular/core';
+import { RequestOptions, URLSearchParams } from '@angular/http';
 import { MdlDialogReference } from 'angular2-mdl';
 import { NoteService } from '../shared/notes.service';
 
@@ -24,7 +23,15 @@ export class ParticipateDialogComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.notes = this.noteService.query();
+        this.getPublishedNotes();
+    }
+
+    getPublishedNotes() {
+        let reqOption = new RequestOptions();
+        reqOption.search = new URLSearchParams();
+        reqOption.search.append("published", "ture");
+
+        this.notes = this.noteService.query(reqOption);
     }
 
     public noteSelected(note, picked) {

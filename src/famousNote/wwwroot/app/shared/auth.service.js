@@ -153,7 +153,12 @@ var AuthService = (function () {
     AuthService.prototype._setRequestOptions = function (options) {
         this._setAuthHeaders(this.currentUser);
         if (options) {
-            options.headers.append(this.authHeaders.keys[0], this.authHeaders.values[0]);
+            options.headers = options.headers || new http_1.Headers();
+            this.authHeaders.forEach(function (values, name) {
+                values.forEach(function (value) {
+                    options.headers.append(name, value);
+                });
+            });
         }
         else {
             options = new http_1.RequestOptions({ headers: this.authHeaders });

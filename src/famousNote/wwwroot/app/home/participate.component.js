@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 var angular2_mdl_1 = require("angular2-mdl");
 var notes_service_1 = require("../shared/notes.service");
 var ParticipateDialogComponent = (function () {
@@ -24,7 +25,13 @@ var ParticipateDialogComponent = (function () {
         });
     }
     ParticipateDialogComponent.prototype.ngOnInit = function () {
-        this.notes = this.noteService.query();
+        this.getPublishedNotes();
+    };
+    ParticipateDialogComponent.prototype.getPublishedNotes = function () {
+        var reqOption = new http_1.RequestOptions();
+        reqOption.search = new http_1.URLSearchParams();
+        reqOption.search.append("published", "ture");
+        this.notes = this.noteService.query(reqOption);
     };
     ParticipateDialogComponent.prototype.noteSelected = function (note, picked) {
         console.log(note, picked);

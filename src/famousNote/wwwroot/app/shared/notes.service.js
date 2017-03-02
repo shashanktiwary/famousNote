@@ -17,16 +17,16 @@ var NoteService = (function () {
         this.authService = authService;
         this.root = 'http://localhost:9002/api/';
     }
-    NoteService.prototype.query = function () {
-        return this.authService.AuthGet(this.root + 'notes')
+    NoteService.prototype.query = function (options) {
+        return this.authService.AuthGet(this.root + 'notes', options)
             .map(function (response) { return response.json(); });
     };
-    NoteService.prototype.post = function (note) {
-        return this.authService.AuthPost(this.root + 'notes', note)
+    NoteService.prototype.post = function (note, options) {
+        return this.authService.AuthPost(this.root + 'notes', note, options)
             .map(function (response) { return response.json(); });
     };
-    NoteService.prototype.update = function (note) {
-        return this.authService.AuthPut(this.root + ("notes/" + note._id), note)
+    NoteService.prototype.update = function (note, options) {
+        return this.authService.AuthPut(this.root + ("notes/" + note._id), note, options)
             .map(function (response) { return response.json(); });
     };
     return NoteService;
