@@ -9,7 +9,7 @@ export class ChallengesService {
     constructor(private http: Http, private authService: AuthService) { }
 
     getCurrentChallanges() {
-        return this.authService.AuthGet(this.root + 'challenges/opened')
+        return this.authService.AuthGet(this.root + 'challanges/current')
             .map(response => response.json());
     }
 
@@ -19,7 +19,7 @@ export class ChallengesService {
     }
 
     getClosedChallanges() {
-        return this.authService.AuthGet(this.root + 'challenges/closed')
+        return this.authService.AuthGet(this.root + 'challanges/closed')
             .map(response => response.json());
     }
 
