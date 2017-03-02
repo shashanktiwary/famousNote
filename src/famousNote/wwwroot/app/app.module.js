@@ -25,6 +25,7 @@ var callback_component_1 = require("./login/callback.component");
 var auth_service_1 = require("./shared/auth.service");
 var auth_gaurd_service_1 = require("./shared/auth.gaurd.service");
 var participate_component_1 = require("./home/participate.component");
+var current_participation_component_1 = require("./home/current.participation.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -56,7 +57,8 @@ AppModule = __decorate([
             logout_component_1.LogoutComponent,
             unauthorized_component_1.UnauthorizedComponent,
             callback_component_1.CallbackComponent,
-            participate_component_1.ParticipateDialogComponent
+            participate_component_1.ParticipateDialogComponent,
+            current_participation_component_1.CurrentParticipationComponent
         ],
         entryComponents: [participate_component_1.ParticipateDialogComponent],
         bootstrap: [app_component_1.AppComponent]

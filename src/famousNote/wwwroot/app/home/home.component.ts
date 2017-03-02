@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChallengesService } from '../shared/challenges.service'
 import { AuthService } from '../shared/auth.service';
 import { MdlDialogService, MdlDialogReference } from 'angular2-mdl';
-import { ParticipateDialogComponent } from './participate.component';
+import { ParticipateDialogComponent, challangeId } from './participate.component';
 
 @Component({
     moduleId: module.id,
@@ -31,18 +31,18 @@ export class HomeComponent implements OnInit {
             },
             error => console.log(error));
 
-        this.challengesService.getCurrentChallanges()
+        this.challengesService.getOpenChallanges()
             .subscribe(challanges => {
                 this.currentChallanges = challanges;
                 console.log(challanges);
             });
     }
 
-    public showDialog() {
+    public showDialog(challange) {
 
         let pDialog = this.dialogService.showCustomDialog({
             component: ParticipateDialogComponent,
-            providers: [{ provide: "", useValue: 'Just an example' }],
+            providers: [{ provide: challangeId, useValue: challange._id }],
             isModal: true,
             styles: { 'width': '350px' },
             clickOutsideToClose: true,

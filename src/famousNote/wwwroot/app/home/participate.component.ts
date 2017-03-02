@@ -1,17 +1,28 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OpaqueToken, Inject, HostListener, OnInit } from '@angular/core';
 import { RequestOptions, URLSearchParams } from '@angular/http';
-import { MdlDialogReference } from 'angular2-mdl';
+import { Router } from '@angular/router';
+import { MdlDialogReference, MdlSnackbarService } from 'angular2-mdl';
 import { NoteService } from '../shared/notes.service';
+import { ChallengesService } from '../shared/challenges.service';
+
+export const challangeId = new OpaqueToken("challangeId");
 
 @Component({
     moduleId: module.id,
     selector: 'participate-dialog',
     templateUrl: 'participate.component.html'
 })
+
 export class ParticipateDialogComponent implements OnInit {
 
     notes: any;
-    constructor(private dialog: MdlDialogReference, private noteService: NoteService) {
+    selectedNotes = new Array();
+    constructor(private dialog: MdlDialogReference,
+        private noteService: NoteService,
+        private challengesService: ChallengesService,
+        private mdlSnackbarService: MdlSnackbarService,
+        private router: Router,
+        @Inject(challangeId) private challangeId: string) {
 
         // register a listener if you want to be informed if the dialog is closed.
         this.dialog.onHide().subscribe((user) => {
@@ -35,12 +46,39 @@ export class ParticipateDialogComponent implements OnInit {
     }
 
     public noteSelected(note, picked) {
-        console.log(note, picked);
+        if (picked.checked && this.selectedNotes.length > 3) {
+            picked = false;
+            return;
+        }
+        if (!picked.checked && this.selectedNotes.length == 0) {
+            return;
+        }
+
+        if (picked.checked) {
+            this.selectedNotes.push(note);
+        }
+
+        if (!picked.checked) {
+            this.selectedNotes.splice(this.selectedNotes.indexOf(note), 1);
+        }
+
+        console.log(this.selectedNotes);
     }
 
-    public login() {
-        console.log('login', this.dialog);
-        this.dialog.hide();
+    public participate() {
+        var challenge = {
+            challangeId: this.challangeId,
+            notes: this.selectedNotes,
+            submitted: true,
+        };
+        this.challengesService.participate(challenge)
+            .subscribe(response => {
+                this.dialog.hide();
+                this.mdlSnackbarService.showToast("Submitted");
+                this.router.navigate(["home/current"]);
+            }, error => {
+                this.mdlSnackbarService.showToast("Unable to participate!");
+            });
     }
 
     @HostListener('keydown.esc')

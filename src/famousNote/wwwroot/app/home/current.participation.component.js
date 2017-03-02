@@ -12,51 +12,32 @@ var core_1 = require("@angular/core");
 var challenges_service_1 = require("../shared/challenges.service");
 var auth_service_1 = require("../shared/auth.service");
 var angular2_mdl_1 = require("angular2-mdl");
-var participate_component_1 = require("./participate.component");
-var HomeComponent = (function () {
-    function HomeComponent(challengesService, authService, dialogService) {
+var CurrentParticipationComponent = (function () {
+    function CurrentParticipationComponent(challengesService, authService, dialogService) {
         this.challengesService = challengesService;
         this.authService = authService;
         this.dialogService = dialogService;
     }
-    HomeComponent.prototype.tabChanged = function (event) {
-        console.log('clicked');
-    };
-    HomeComponent.prototype.ngOnInit = function () {
+    CurrentParticipationComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loadedUserSub = this.authService.userLoadededEvent
             .subscribe(function (user) {
             _this._user = user;
         }, function (error) { return console.log(error); });
-        this.challengesService.getOpenChallanges()
+        this.challengesService.getCurrentChallanges()
             .subscribe(function (challanges) {
             _this.currentChallanges = challanges;
             console.log(challanges);
         });
     };
-    HomeComponent.prototype.showDialog = function (challange) {
-        var pDialog = this.dialogService.showCustomDialog({
-            component: participate_component_1.ParticipateDialogComponent,
-            providers: [{ provide: participate_component_1.challangeId, useValue: challange._id }],
-            isModal: true,
-            styles: { 'width': '350px' },
-            clickOutsideToClose: true,
-            enterTransitionDuration: 400,
-            leaveTransitionDuration: 400
-        });
-        pDialog.subscribe(function (dialogReference) {
-            console.log('dialog visible', dialogReference);
-        });
-    };
-    return HomeComponent;
+    return CurrentParticipationComponent;
 }());
-HomeComponent = __decorate([
+CurrentParticipationComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        templateUrl: 'home.component.html',
-        providers: []
+        templateUrl: 'current.participation.component.html'
     }),
     __metadata("design:paramtypes", [challenges_service_1.ChallengesService, auth_service_1.AuthService, angular2_mdl_1.MdlDialogService])
-], HomeComponent);
-exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.component.js.map
+], CurrentParticipationComponent);
+exports.CurrentParticipationComponent = CurrentParticipationComponent;
+//# sourceMappingURL=current.participation.component.js.map

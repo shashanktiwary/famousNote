@@ -18,15 +18,19 @@ var ChallengesService = (function () {
         this.root = 'http://localhost:9001/api/';
     }
     ChallengesService.prototype.getCurrentChallanges = function () {
-        return this.authService.AuthGet(this.root + 'challanges')
+        return this.authService.AuthGet(this.root + 'challenges/opened')
             .map(function (response) { return response.json(); });
     };
     ChallengesService.prototype.getOpenChallanges = function () {
-        return this.authService.AuthGet(this.root + 'challenges/opened')
+        return this.authService.AuthGet(this.root + 'challanges')
             .map(function (response) { return response.json(); });
     };
     ChallengesService.prototype.getClosedChallanges = function () {
         return this.authService.AuthGet(this.root + 'challenges/closed')
+            .map(function (response) { return response.json(); });
+    };
+    ChallengesService.prototype.participate = function (challange) {
+        return this.authService.AuthPost(this.root + "submitions", challange)
             .map(function (response) { return response.json(); });
     };
     return ChallengesService;
