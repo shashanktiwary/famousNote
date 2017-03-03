@@ -8,7 +8,7 @@ import { SaveNote } from './note/save-note.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { CallbackComponent } from './login/callback.component';
 import { LogoutComponent } from './logout/logout.component';
-import { CurrentParticipationComponent } from './home/current.participation.component';
+import { CurrentChallangeComponent } from './challange/current.component';
 import { AuthGuardService } from './shared/auth.gaurd.service';
 import { AuthService } from './shared/auth.service';
 
@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'unauthorized', component: UnauthorizedComponent },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
-    { path: 'home/current', component: CurrentParticipationComponent, canActivate: [AuthGuardService] },
+    { path: 'home/current', component: CurrentChallangeComponent, canActivate: [AuthGuardService] },
     { path: 'about', component: AboutComponent, canActivate: [AuthGuardService] },
     { path: 'notes', component: Notes, canActivate: [AuthGuardService] },
     { path: 'notes/save', component: SaveNote, canActivate: [AuthGuardService] },

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChallengesService } from '../shared/challenges.service'
 import { AuthService } from '../shared/auth.service';
 import { MdlDialogService, MdlDialogReference } from 'angular2-mdl';
-import { ParticipateDialogComponent, challangeId } from './participate.component';
+import { ParticipateDialogComponent, challangeId } from '../challange/participate.component';
 
 @Component({
     moduleId: module.id,

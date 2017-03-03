@@ -19,8 +19,8 @@ import { CallbackComponent } from './login/callback.component';
 
 import { AuthService } from './shared/auth.service';
 import { AuthGuardService } from './shared/auth.gaurd.service';
-import { ParticipateDialogComponent } from './home/participate.component';
-import { CurrentParticipationComponent } from './home/current.participation.component';
+import { ParticipateDialogComponent } from './challange/participate.component';
+import { CurrentChallangeComponent } from './challange/current.component';
 
 @NgModule({
     imports: [
@@ -48,7 +48,7 @@ import { CurrentParticipationComponent } from './home/current.participation.comp
         UnauthorizedComponent,
         CallbackComponent,
         ParticipateDialogComponent,
-        CurrentParticipationComponent
+        CurrentChallangeComponent
     ],
     entryComponents: [ParticipateDialogComponent],
     bootstrap: [AppComponent]

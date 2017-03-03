@@ -6,9 +6,9 @@ import { ParticipateDialogComponent } from './participate.component';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'current.participation.component.html'
+    templateUrl: 'current.component.html'
 })
-export class CurrentParticipationComponent implements OnInit {
+export class CurrentChallangeComponent implements OnInit {
     currentChallanges: any;
     _user: any;
     loadedUserSub: any;
