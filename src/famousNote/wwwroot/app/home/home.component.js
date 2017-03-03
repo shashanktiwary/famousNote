@@ -12,7 +12,7 @@ var core_1 = require("@angular/core");
 var challenges_service_1 = require("../shared/challenges.service");
 var auth_service_1 = require("../shared/auth.service");
 var angular2_mdl_1 = require("angular2-mdl");
-var participate_component_1 = require("./participate.component");
+var participate_component_1 = require("../challange/participate.component");
 var HomeComponent = (function () {
     function HomeComponent(challengesService, authService, dialogService) {
         this.challengesService = challengesService;

@@ -66,6 +66,11 @@ export class ParticipateDialogComponent implements OnInit {
     }
 
     public participate() {
+        if (this.selectedNotes.length < 1) {
+            this.mdlSnackbarService.showToast("Oops forgot to select a note.");
+            return;
+        }
+
         var challenge = {
             challangeId: this.challangeId,
             notes: this.selectedNotes,

@@ -62,6 +62,10 @@ var ParticipateDialogComponent = (function () {
     };
     ParticipateDialogComponent.prototype.participate = function () {
         var _this = this;
+        if (this.selectedNotes.length < 1) {
+            this.mdlSnackbarService.showToast("Oops forgot to select a note.");
+            return;
+        }
         var challenge = {
             challangeId: this.challangeId,
             notes: this.selectedNotes,

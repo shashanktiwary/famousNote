@@ -3,6 +3,7 @@ import { ChallengesService } from '../shared/challenges.service'
 import { AuthService } from '../shared/auth.service';
 import { MdlDialogService, MdlDialogReference } from 'angular2-mdl';
 import { ParticipateDialogComponent } from './participate.component';
+import { VoteDialogComponent, challangeId } from './vote.component';
 
 @Component({
     moduleId: module.id,
@@ -27,5 +28,17 @@ export class CurrentChallangeComponent implements OnInit {
                 this.currentChallanges = challanges;
                 console.log(challanges);
             });
+    }
+
+    openVoteDialog(challange) {
+        this.dialogService.showCustomDialog({
+            component: VoteDialogComponent,
+            providers: [{ provide: challangeId, useValue: challange._id }],
+            isModal: true,
+            styles: { 'width': '350px' },
+            clickOutsideToClose: true,
+            enterTransitionDuration: 400,
+            leaveTransitionDuration: 400
+        });
     }
 }

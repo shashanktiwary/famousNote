@@ -12,13 +12,14 @@ var core_1 = require("@angular/core");
 var challenges_service_1 = require("../shared/challenges.service");
 var auth_service_1 = require("../shared/auth.service");
 var angular2_mdl_1 = require("angular2-mdl");
-var CurrentParticipationComponent = (function () {
-    function CurrentParticipationComponent(challengesService, authService, dialogService) {
+var vote_component_1 = require("./vote.component");
+var CurrentChallangeComponent = (function () {
+    function CurrentChallangeComponent(challengesService, authService, dialogService) {
         this.challengesService = challengesService;
         this.authService = authService;
         this.dialogService = dialogService;
     }
-    CurrentParticipationComponent.prototype.ngOnInit = function () {
+    CurrentChallangeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loadedUserSub = this.authService.userLoadededEvent
             .subscribe(function (user) {
@@ -30,14 +31,25 @@ var CurrentParticipationComponent = (function () {
             console.log(challanges);
         });
     };
-    return CurrentParticipationComponent;
+    CurrentChallangeComponent.prototype.openVoteDialog = function (challange) {
+        this.dialogService.showCustomDialog({
+            component: vote_component_1.VoteDialogComponent,
+            providers: [{ provide: vote_component_1.challangeId, useValue: challange._id }],
+            isModal: true,
+            styles: { 'width': '350px' },
+            clickOutsideToClose: true,
+            enterTransitionDuration: 400,
+            leaveTransitionDuration: 400
+        });
+    };
+    return CurrentChallangeComponent;
 }());
-CurrentParticipationComponent = __decorate([
+CurrentChallangeComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        templateUrl: 'current.participation.component.html'
+        templateUrl: 'current.component.html'
     }),
     __metadata("design:paramtypes", [challenges_service_1.ChallengesService, auth_service_1.AuthService, angular2_mdl_1.MdlDialogService])
-], CurrentParticipationComponent);
-exports.CurrentParticipationComponent = CurrentParticipationComponent;
-//# sourceMappingURL=current.participation.component.js.map
+], CurrentChallangeComponent);
+exports.CurrentChallangeComponent = CurrentChallangeComponent;
+//# sourceMappingURL=current.component.js.map

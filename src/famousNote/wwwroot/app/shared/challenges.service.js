@@ -33,6 +33,14 @@ var ChallengesService = (function () {
         return this.authService.AuthPost(this.root + "submitions", challange)
             .map(function (response) { return response.json(); });
     };
+    ChallengesService.prototype.getParticipatesNotes = function (challangeId) {
+        return this.authService.AuthGet(this.root + ("challanges/" + challangeId + "/submitions"))
+            .map(function (response) { return response.json(); });
+    };
+    ChallengesService.prototype.vote = function (submitionId, noteId) {
+        return this.authService.AuthPut(this.root + ("submitions/" + submitionId + "/vote"), { id: noteId })
+            .map(function (response) { return response.json(); });
+    };
     return ChallengesService;
 }());
 ChallengesService = __decorate([

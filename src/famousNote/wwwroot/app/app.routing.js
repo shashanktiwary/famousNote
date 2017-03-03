@@ -7,7 +7,7 @@ var notes_component_1 = require("./note/notes.component");
 var save_note_component_1 = require("./note/save-note.component");
 var unauthorized_component_1 = require("./unauthorized/unauthorized.component");
 var callback_component_1 = require("./login/callback.component");
-var current_participation_component_1 = require("./home/current.participation.component");
+var current_component_1 = require("./challange/current.component");
 var auth_gaurd_service_1 = require("./shared/auth.gaurd.service");
 var auth_service_1 = require("./shared/auth.service");
 var appRoutes = [
@@ -17,7 +17,7 @@ var appRoutes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'unauthorized', component: unauthorized_component_1.UnauthorizedComponent },
     { path: 'home', component: home_component_1.HomeComponent, canActivate: [auth_gaurd_service_1.AuthGuardService] },
-    { path: 'home/current', component: current_participation_component_1.CurrentParticipationComponent, canActivate: [auth_gaurd_service_1.AuthGuardService] },
+    { path: 'home/current', component: current_component_1.CurrentChallangeComponent, canActivate: [auth_gaurd_service_1.AuthGuardService] },
     { path: 'about', component: about_component_1.AboutComponent, canActivate: [auth_gaurd_service_1.AuthGuardService] },
     { path: 'notes', component: notes_component_1.Notes, canActivate: [auth_gaurd_service_1.AuthGuardService] },
     { path: 'notes/save', component: save_note_component_1.SaveNote, canActivate: [auth_gaurd_service_1.AuthGuardService] },

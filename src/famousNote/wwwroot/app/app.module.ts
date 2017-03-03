@@ -21,6 +21,7 @@ import { AuthService } from './shared/auth.service';
 import { AuthGuardService } from './shared/auth.gaurd.service';
 import { ParticipateDialogComponent } from './challange/participate.component';
 import { CurrentChallangeComponent } from './challange/current.component';
+import { VoteDialogComponent } from './challange/vote.component';
 
 @NgModule({
     imports: [
@@ -48,9 +49,10 @@ import { CurrentChallangeComponent } from './challange/current.component';
         UnauthorizedComponent,
         CallbackComponent,
         ParticipateDialogComponent,
+        VoteDialogComponent,
         CurrentChallangeComponent
     ],
-    entryComponents: [ParticipateDialogComponent],
+    entryComponents: [ParticipateDialogComponent, VoteDialogComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

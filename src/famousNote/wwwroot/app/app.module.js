@@ -24,8 +24,9 @@ var unauthorized_component_1 = require("./unauthorized/unauthorized.component");
 var callback_component_1 = require("./login/callback.component");
 var auth_service_1 = require("./shared/auth.service");
 var auth_gaurd_service_1 = require("./shared/auth.gaurd.service");
-var participate_component_1 = require("./home/participate.component");
-var current_participation_component_1 = require("./home/current.participation.component");
+var participate_component_1 = require("./challange/participate.component");
+var current_component_1 = require("./challange/current.component");
+var vote_component_1 = require("./challange/vote.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -58,9 +59,10 @@ AppModule = __decorate([
             unauthorized_component_1.UnauthorizedComponent,
             callback_component_1.CallbackComponent,
             participate_component_1.ParticipateDialogComponent,
-            current_participation_component_1.CurrentParticipationComponent
+            vote_component_1.VoteDialogComponent,
+            current_component_1.CurrentChallangeComponent
         ],
-        entryComponents: [participate_component_1.ParticipateDialogComponent],
+        entryComponents: [participate_component_1.ParticipateDialogComponent, vote_component_1.VoteDialogComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

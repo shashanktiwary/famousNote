@@ -27,4 +27,14 @@ export class ChallengesService {
         return this.authService.AuthPost(this.root + "submitions", challange)
             .map(response => response.json());
     }
+
+    getParticipatesNotes(challangeId: string) {
+        return this.authService.AuthGet(this.root + `challanges/${challangeId}/submitions`)
+            .map(response => response.json());
+    }
+
+    vote(submitionId: string, noteId: string) {
+        return this.authService.AuthPut(this.root + `submitions/${submitionId}/vote`, { id: noteId })
+            .map(response => response.json());
+    }
 }
