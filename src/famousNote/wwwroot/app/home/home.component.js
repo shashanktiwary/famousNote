@@ -39,7 +39,7 @@ var HomeComponent = (function () {
             component: participate_component_1.ParticipateDialogComponent,
             providers: [{ provide: participate_component_1.challangeId, useValue: challange._id }],
             isModal: true,
-            styles: { 'width': '350px' },
+            styles: { 'width': '350px', 'max-height': '450px' },
             clickOutsideToClose: true,
             enterTransitionDuration: 400,
             leaveTransitionDuration: 400

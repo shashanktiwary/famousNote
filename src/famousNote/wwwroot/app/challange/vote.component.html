@@ -9,7 +9,7 @@
                 {{res.notes.note}}
             </div>
             <div class="mdl-card__menu">
-                <button *ngIf="!res.voted" mdl-button #btn2="mdlButton" (click)="voteNote(res._id, res.notes)" mdl-button-type="icon" mdl-ripple><mdl-icon>favorite_border</mdl-icon></button>
+                <button *ngIf="!res.voted" mdl-button #btn2="mdlButton" (click)="voteNote(res._id, res)" mdl-button-type="icon" mdl-ripple><mdl-icon>favorite_border</mdl-icon></button>
                 <i *ngIf="res.voted" class="material-icons">done_all</i>
             </div>
         </div>

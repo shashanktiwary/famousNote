@@ -36,7 +36,7 @@ export class VoteDialogComponent implements OnInit {
     }
 
     public voteNote(submitionId: string, note) {
-        this.challengesService.vote(submitionId, note._id)
+        this.challengesService.vote(submitionId, note.notes._id)
             .subscribe(response => {
                 note.voted = true;
             }, err => {

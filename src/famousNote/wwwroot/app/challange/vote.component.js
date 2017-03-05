@@ -32,7 +32,7 @@ var VoteDialogComponent = (function () {
         this.notes = this.challengesService.getParticipatesNotes(this.challangeId);
     };
     VoteDialogComponent.prototype.voteNote = function (submitionId, note) {
-        this.challengesService.vote(submitionId, note._id)
+        this.challengesService.vote(submitionId, note.notes._id)
             .subscribe(function (response) {
             note.voted = true;
         }, function (err) {

@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
             component: ParticipateDialogComponent,
             providers: [{ provide: challangeId, useValue: challange._id }],
             isModal: true,
-            styles: { 'width': '350px' },
+            styles: { 'width': '350px', 'max-height':'450px' },
             clickOutsideToClose: true,
             enterTransitionDuration: 400,
             leaveTransitionDuration: 400

@@ -236,3 +236,11 @@ html, body {
 .mdl-demo .mdl-menu__container {
   z-index: 99;
 }
+
+
+    mdl-dialog-host-component.open {
+      overflow: auto;
+      visibility: visible;
+    }
+    
+    
