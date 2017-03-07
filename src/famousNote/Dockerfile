@@ -5,10 +5,11 @@ MAINTAINER Shashank Tiwary
 ENV DOTNET_USE_POLLING_FILE_WATCHER=1
 ENV ASPNETCORE_URLS=http://*:5000
 
-COPY ./project.json /var/www/app/project.json
-COPY ./package.json /var/www/app/package.json
+COPY ./project.json /var/www/famousNote/project.json
+COPY ./package.json /var/www/famousNote/package.json
+COPY . /var/www/famousNote
 
-WORKDIR /var/www/app
+WORKDIR /var/www/famousNote
 
 # Install required packages
 RUN apt-get update -q \
@@ -52,17 +53,14 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
 
 RUN cd /tmp && wget https://www.npmjs.org/install.sh && sh install.sh
 
-# install npm typescript
-RUN npm install --global typescript typings
-
 RUN npm install
 
-RUN tsc
+RUN npm run tsc
 
 RUN dotnet restore
 
 RUN dotnet build
 
-EXPOSE 5000/tcp
+EXPOSE 5000
 
 ENTRYPOINT ["dotnet", "run"]
